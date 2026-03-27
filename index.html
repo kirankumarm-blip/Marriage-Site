@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wedding</title>
-  
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
@@ -251,6 +250,33 @@ body {
   margin-top: 20px;
 }
 
+.names {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Default (Desktop) */
+.names .heart {
+  display: inline;
+  margin: 0 10px;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.2;
+  }
+
+  .names .heart {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
 /* 💓 HEART BEAT ANIMATION */
 .heart {
   display: inline-block;
@@ -303,10 +329,10 @@ body {
   <!-- HERO -->
   <div id="hero-section" class="section-hero">
     <div class="hero-text">
-<h1>
-  Kiran 
-  <span class="heart">❤️</span> 
-  Chandana
+<h1 class="names">
+  <span>Kiran</span>
+  <span class="heart">❤️</span>
+  <span>Chandana</span>
 </h1>
 
       <p class="love-quote" id="loveQuote">
