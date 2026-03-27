@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------- SPLIT HERO ---------- */
+.hero {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  transition: opacity 1s ease;
+}
+
+.side {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+}
+
+.left {
+  background-image: url('https://i.postimg.cc/PJ3PQBZQ/Gemini-Generated-Image-svwjpssvwjpssvwj.png');
+}
+
+.right {
+  background-image: url('https://i.postimg.cc/Xqpymjnf/Gemini-Generated-Image-7g4jex7g4jex7g4j.png');
+}
+
+.center-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.center-content h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+.enter-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+/* ---------- MAIN ---------- */
+#main {
+  display: none;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: white;
+  bottom: 0;
+  left: 0;
+}
+
+/* SCROLLED NAVBAR */
+.navbar.scrolled {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar.scrolled a {
+  color: black;
+}
+
+.navbar.scrolled a.active::after {
+  background: #d4af37;
+}
+
+/* ---------- HERO ---------- */
+.section-hero {
+  height: 100vh;
+  background: url('https://i.postimg.cc/D0gpd8sV/Pngtree-indian-style-blue-background-template-16258596.jpg') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+}
+
+.section-hero::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-text {
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 60px;
+  letter-spacing: 2px;
+}
+
+/* 💖 LOVE QUOTE */
+.love-quote {
+  font-size: 20px;
+  margin-top: 15px;
+  font-style: italic;
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
+}
+
+.sub-text {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+/* ---------- SECTIONS ---------- */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.light {
+  background: #f5f5f5;
+}
+
+.full-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.big {
+  font-size: 24px;
+}
+
+/* ---------- DIVIDER ---------- */
+.divider {
+  width: 80px;
+  height: 2px;
+  background: #d4af37;
+  margin: 15px auto;
+}
+
+/* ---------- STORY ---------- */
+.story-images {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.story-images img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+}
+
+.story-quotes {
+  margin-top: 30px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.quote {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+/* ---------- EVENTS ---------- */
+.events-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.events-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 10px;
+}
+
+/* ---------- VENUE ---------- */
+.venue img {
+  width: 90%;
+  max-width: 700px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.map {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+}
+
+/* 💓 HEART BEAT ANIMATION */
+.heart {
+  display: inline-block;
+  animation: heartbeat 1s infinite;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.2); }
+  40%  { transform: scale(1); }
+  60%  { transform: scale(1.3); }
+  80%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .story-images {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLIT SCREEN -->
+<div id="hero" class="hero">
+  <div class="side left"></div>
+  <div class="side right"></div>
+
+  <div class="center-content">
+    <h1>We’re getting married</h1>
+    <button class="enter-btn" onclick="enterSite()">ENTER</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="#hero-section" class="active">Home</a>
+    <a href="#story">OUR STORY</a>
+    <a href="#events">EVENTS</a>
+  </div>
+
+  <!-- HERO -->
+  <div id="hero-section" class="section-hero">
+    <div class="hero-text">
+<h1>
+  Kiran 
+  <span class="heart">❤️</span> 
+  Chandana
+</h1>
+
+      <p class="love-quote" id="loveQuote">
+        "Every love story is beautiful, but ours is my favorite."
+      </p>
+
+      <p class="sub-text">We're Getting Married</p>
+    </div>
+  </div>
+
+  <!-- DATE -->
+  <div class="section light">
+    <h2>22 & 23 April 2026</h2>
+    <div class="divider"></div>
+    <p class="big">
+  "On this day, two hearts unite, two souls become one, 
+  and a beautiful forever begins ❤️"
+</p>
+<p style="margin-top:15px; font-size:16px;">
+  With joyful hearts, we invite you to be a part of our special day 
+  and bless us as we begin our forever journey.
+</p>
+  </div>
+
+  <!-- STORY -->
+  <div id="story" class="section full-page">
+    <h2>Our Story</h2>
+    <div class="divider"></div>
+
+    <div class="story-images">
+      <img src="https://i.postimg.cc/J49msF1J/Chat-GPT-Image-Mar-27-2026-04-57-51-PM.png">
+      <img src="https://i.postimg.cc/kXx6XWCM/Gemini-Generated-Image-qjkg2hqjkg2hqjkg.png">
+    </div>
+
+    <div class="story-quotes">
+      <p class="big">"From classroom memories to forever ❤️"</p>
+
+      <p>
+        Between fights and silent stares, our story began,
+friendship grew where we least expected,<br>
+love followed in the most beautiful way,
+and today, we stand hand in hand,
+ready to begin our forever.
+      </p>
+
+      <p class="quote">"Some love stories begin in classrooms."</p>
+    </div>
+  </div>
+  
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- EVENTS -->
+  <div id="events" class="section light">
+    <h2>Events</h2>
+    <div class="divider"></div>
+
+    <div class="events-container">
+      <div class="events-image">
+        <img src="https://i.postimg.cc/7YC41qcN/Chat-GPT-Image-Mar-27-2026-03-50-59-PM.png">
+      </div>
+    </div>
+  </div>
+
+  <!-- VENUE -->
+  <div class="section venue">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepQAX5_aTICT9z7xBtg94RGTuLT8Jp9rmf5ZP2pkcXZ7jbXYfW0o-6mnApSZJ6kSBw9rtXs7TDQBMKykZjQbmbgsdpcwp-_xGfTiDjHgrTp9dQeTdi50C4AxsCk-pJL3EBOIj4NrA=s680-w680-h510-rw">
+
+    <h2>Wedding Venue</h2>
+    <div class="divider"></div>
+
+    <h3>Shree Ranganatha Kalyana Mantapa</h3>
+    <p>Bannerghatta, Bengaluru</p>
+
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Sri+Ranganatha+Kalyana+Mantapa+Bannerghatta&output=embed"
+        width="100%" height="300" style="border:0;"></iframe>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ENTER
+function enterSite() {
+  const hero = document.getElementById('hero');
+  const main = document.getElementById('main');
+
+  hero.style.opacity = "0";
+
+  setTimeout(() => {
+    hero.style.display = 'none';
+    main.style.display = 'block';
+  }, 800);
+}
+
+// NAV ACTIVE
+const links = document.querySelectorAll('.navbar a');
+links.forEach(link => {
+  link.addEventListener('click', function () {
+    links.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// NAV SCROLL
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+function enterSite() {
+  const hero = document.getElementById('hero');
+  const main = document.getElementById('main');
+  const music = document.getElementById('bgMusic');
+
+  hero.style.opacity = "0";
+
+  // ▶️ PLAY MUSIC AFTER USER CLICK
+  music.play().catch(() => {
+    console.log("Autoplay blocked until interaction");
+  });
+
+  setTimeout(() => {
+    hero.style.display = 'none';
+    main.style.display = 'block';
+  }, 800);
+}
+
+// SCROLL ANIMATION
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    if (window.scrollY > sec.offsetTop - 400) {
+      sec.classList.add('show');
+    }
+  });
+});
+
+// 💖 ROTATING LOVE QUOTES
+const quotes = [
+  "Every love story is beautiful, but ours is my favorite.",
+  "From classmates to soulmates ❤️",
+  "Two hearts, one soul, forever together.",
+  "You are my today and all of my tomorrows.",
+  "In you, I found my forever.",
+  "Together is a beautiful place to be."
+];
+
+let i = 0;
+const quoteElement = document.getElementById("loveQuote");
+
+setInterval(() => {
+  quoteElement.style.opacity = 0;
+
+  setTimeout(() => {
+    i = (i + 1) % quotes.length;
+    quoteElement.innerText = quotes[i];
+    quoteElement.style.opacity = 1;
+  }, 500);
+
+}, 3000);
+</script>
+
+</body>
+</html>
